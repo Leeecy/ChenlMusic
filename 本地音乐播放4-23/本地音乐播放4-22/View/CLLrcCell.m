@@ -33,7 +33,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.textLabel.textColor = [UIColor whiteColor];
+        self.textLabel.textColor = [UIColor blackColor];
         self.textLabel.numberOfLines = 0;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
     }
