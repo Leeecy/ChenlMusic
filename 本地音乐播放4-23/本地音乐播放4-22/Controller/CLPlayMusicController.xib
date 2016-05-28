@@ -9,13 +9,15 @@
             <connections>
                 <outlet property="currentTimeView" destination="KME-bP-DaX" id="k2c-tn-APi"/>
                 <outlet property="durationLabel" destination="njY-Ag-FT1" id="atw-Lp-6Dk"/>
+                <outlet property="exitBtn" destination="4Kn-ir-7Sb" id="QXv-fk-dLv"/>
                 <outlet property="iconView" destination="v0K-ci-HrT" id="7dJ-Ez-21Z"/>
-                <outlet property="lrcView" destination="bdy-xE-yiu" id="exJ-QZ-Vuf"/>
+                <outlet property="lyricOrPhotoBtn" destination="O8K-kW-oYg" id="Wgu-Bb-wyM"/>
                 <outlet property="playOrPauseButton" destination="Nun-tj-kxc" id="HVj-a3-lGq"/>
                 <outlet property="progressView" destination="w2A-jk-JeV" id="XfQ-an-s86"/>
                 <outlet property="singerLabel" destination="kai-iV-bU7" id="Yey-Nc-E9f"/>
                 <outlet property="slider" destination="YLN-qo-DoO" id="uko-Ml-hQ6"/>
                 <outlet property="songLabel" destination="uoo-2I-8JK" id="brB-7r-bAm"/>
+                <outlet property="topView" destination="NZT-Up-RyP" id="N2o-39-qDZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -68,10 +70,6 @@
                                 <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-xE-yiu" userLabel="歌词显示控件" customClass="CLLrcView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kn-ir-7Sb" userLabel="退出">
                             <rect key="frame" x="15" y="30" width="30" height="30"/>
                             <constraints>
@@ -99,8 +97,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="O8K-kW-oYg" firstAttribute="top" secondItem="4Kn-ir-7Sb" secondAttribute="top" id="0Oo-6Q-ujw"/>
-                        <constraint firstItem="bdy-xE-yiu" firstAttribute="leading" secondItem="NZT-Up-RyP" secondAttribute="leading" id="1ul-Mu-5b1"/>
-                        <constraint firstItem="bdy-xE-yiu" firstAttribute="top" secondItem="NZT-Up-RyP" secondAttribute="top" id="2aR-It-02v"/>
                         <constraint firstAttribute="bottom" secondItem="m2E-vL-fP1" secondAttribute="bottom" id="6N0-jC-hhx"/>
                         <constraint firstItem="v0K-ci-HrT" firstAttribute="leading" secondItem="NZT-Up-RyP" secondAttribute="leading" id="AT1-1A-sXY"/>
                         <constraint firstItem="4Kn-ir-7Sb" firstAttribute="leading" secondItem="NZT-Up-RyP" secondAttribute="leading" constant="15" id="C2c-1J-Boa"/>
@@ -109,8 +105,6 @@
                         <constraint firstAttribute="height" constant="400" id="Hg2-SN-gPq"/>
                         <constraint firstAttribute="trailing" secondItem="m2E-vL-fP1" secondAttribute="trailing" id="K9i-BV-occ"/>
                         <constraint firstItem="v0K-ci-HrT" firstAttribute="top" secondItem="NZT-Up-RyP" secondAttribute="top" id="KBq-2c-k0v"/>
-                        <constraint firstAttribute="bottom" secondItem="bdy-xE-yiu" secondAttribute="bottom" id="NUZ-rH-0JJ"/>
-                        <constraint firstAttribute="trailing" secondItem="bdy-xE-yiu" secondAttribute="trailing" id="Vuc-jm-ai0"/>
                         <constraint firstItem="4Kn-ir-7Sb" firstAttribute="top" secondItem="NZT-Up-RyP" secondAttribute="top" constant="30" id="WwA-9l-uyn"/>
                         <constraint firstAttribute="bottom" secondItem="v0K-ci-HrT" secondAttribute="bottom" id="k4c-My-VzK"/>
                         <constraint firstAttribute="trailing" secondItem="v0K-ci-HrT" secondAttribute="trailing" id="twX-ev-b7D"/>

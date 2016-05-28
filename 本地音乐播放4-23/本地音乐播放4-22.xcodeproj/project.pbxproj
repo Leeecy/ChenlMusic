@@ -30,6 +30,8 @@
 		04DF479F1CC9BA9D009A8AA1 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF479E1CC9BA9D009A8AA1 /* Colours.m */; };
 		04DF47A21CC9BAE7009A8AA1 /* CLMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF47A11CC9BAE7009A8AA1 /* CLMusicCell.m */; };
 		04DF47A51CC9BFE3009A8AA1 /* CLMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF47A41CC9BFE3009A8AA1 /* CLMusicTool.m */; };
+		04FB34611CF97CC500D51DA3 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB34601CF97CC500D51DA3 /* UIView+AutoLayout.m */; };
+		04FB34631CF97E6100D51DA3 /* 28131977_1383101943208.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04FB34621CF97E6100D51DA3 /* 28131977_1383101943208.jpg */; };
 		C4A2DE831CCCFDAA00FE173F /* Freedom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4A2DE821CCCFDAA00FE173F /* Freedom.mp3 */; };
 		C4B996431CC939030024AA0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B996421CC939030024AA0A /* main.m */; };
 		C4B996461CC939030024AA0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B996451CC939030024AA0A /* AppDelegate.m */; };
@@ -142,6 +144,9 @@
 		04DF47A11CC9BAE7009A8AA1 /* CLMusicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMusicCell.m; sourceTree = "<group>"; };
 		04DF47A31CC9BFE3009A8AA1 /* CLMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMusicTool.h; sourceTree = "<group>"; };
 		04DF47A41CC9BFE3009A8AA1 /* CLMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMusicTool.m; sourceTree = "<group>"; };
+		04FB345F1CF97CC500D51DA3 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		04FB34601CF97CC500D51DA3 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
+		04FB34621CF97E6100D51DA3 /* 28131977_1383101943208.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 28131977_1383101943208.jpg; sourceTree = "<group>"; };
 		C4A2DE821CCCFDAA00FE173F /* Freedom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Freedom.mp3; sourceTree = "<group>"; };
 		C4B9963E1CC939030024AA0A /* 本地音乐播放4-22.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "本地音乐播放4-22.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B996421CC939030024AA0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -391,6 +396,7 @@
 		C4F971AE1CC93AAE00084F83 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04FB34621CF97E6100D51DA3 /* 28131977_1383101943208.jpg */,
 				C4F971AF1CC93AAE00084F83 /* Images */,
 				C4F971C21CC93AAE00084F83 /* Lrcs */,
 				C4F971CC1CC93AAE00084F83 /* MP3s */,
@@ -459,6 +465,8 @@
 		C4F972071CC93D2C00084F83 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				04FB345F1CF97CC500D51DA3 /* UIView+AutoLayout.h */,
+				04FB34601CF97CC500D51DA3 /* UIView+AutoLayout.m */,
 				04DF47961CC9BA7E009A8AA1 /* UIView+Extension.h */,
 				04DF47971CC9BA7E009A8AA1 /* UIView+Extension.m */,
 				04DF47981CC9BA7E009A8AA1 /* UIImage+MJ.h */,
@@ -598,6 +606,7 @@
 				C4F971FA1CC93AAE00084F83 /* 339744.mp3 in Resources */,
 				C4F971EA1CC93AAE00084F83 /* 10736444.lrc in Resources */,
 				C4F971E41CC93AAE00084F83 /* nanquan_icon@2x.jpg in Resources */,
+				04FB34631CF97E6100D51DA3 /* 28131977_1383101943208.jpg in Resources */,
 				C4F971D81CC93AAE00084F83 /* bb_icon@2x.jpg in Resources */,
 				C4F971E21CC93AAE00084F83 /* kzxd_icon@2x.jpg in Resources */,
 				C4F971FB1CC93AAE00084F83 /* Musics.plist in Resources */,
@@ -661,6 +670,7 @@
 				045B141D1CF934570099E830 /* CLLrcLine.m in Sources */,
 				04DF478C1CC9B7E1009A8AA1 /* MJExtensionConst.m in Sources */,
 				C4B996461CC939030024AA0A /* AppDelegate.m in Sources */,
+				04FB34611CF97CC500D51DA3 /* UIView+AutoLayout.m in Sources */,
 				04DF47A21CC9BAE7009A8AA1 /* CLMusicCell.m in Sources */,
 				04DF479B1CC9BA7E009A8AA1 /* UIImage+MJ.m in Sources */,
 				045BE7F21CF852D40000F595 /* UIImage+BoxBlur.m in Sources */,

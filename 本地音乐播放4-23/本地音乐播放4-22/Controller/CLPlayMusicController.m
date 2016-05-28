@@ -21,6 +21,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CLAudioTool.h"
 #import "CLLrcView.h"
+#import "UIView+AutoLayout.h"
 @interface CLPlayMusicController ()<AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
@@ -50,7 +51,16 @@
  *  播放进度定时器
  */
 @property (nonatomic, strong) NSTimer *currentTimeTimer;
-@property (weak, nonatomic) IBOutlet CLLrcView *lrcView;
+
+/**
+ *  显示歌词的定时器
+ */
+@property (nonatomic, strong) CADisplayLink *lrcTimer;
+@property (weak, nonatomic)  CLLrcView *lrcView;
+//顶部view
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIButton *exitBtn;
+@property (weak, nonatomic) IBOutlet UIButton *lyricOrPhotoBtn;
 
 @end
 
@@ -58,6 +68,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupLrcView];
     self.currentTimeView.layer.cornerRadius = 10;
 }
 
@@ -65,7 +76,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)setupLrcView
+{
+    CLLrcView *lrcView = [[CLLrcView alloc] init];
+    self.lrcView = lrcView;
+    lrcView.hidden = YES;
+    [self.topView addSubview:lrcView];
+    [lrcView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, - 50, 0)];
+    [self.topView insertSubview:self.exitBtn aboveSubview:lrcView];
+    [self.topView insertSubview:self.lyricOrPhotoBtn aboveSubview:lrcView];
+}
 -(void)show{
     // 0.禁用整个app的点击事件  拿到最上面的窗口
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
@@ -134,7 +154,11 @@
  */
 -(void)startPlayingMusic{
 //    如果当前歌曲等于正在播放的歌曲 返回
-    if (self.musicModel == [CLMusicTool playMusic]) return ;
+    if (self.musicModel == [CLMusicTool playMusic]){
+        [self addCurrentTimeTimer];
+        [self addLrcTimer];
+        return;
+    }
     // 1.设置界面数据
 //    当前正在播放的歌曲
     self.musicModel = [CLMusicTool playMusic];
@@ -149,10 +173,11 @@
     
     // 4.开始定时器
     [self addCurrentTimeTimer];
+    [self addLrcTimer];
     //    4.设置播放按钮状态
     self.playOrPauseButton.selected = YES;
 //    5.切换歌词（加载新的歌词）
-    
+    self.lrcView.lrcname= self.musicModel.lrcname;
     
     
 }
@@ -171,10 +196,41 @@
     self.playOrPauseButton.selected = NO;
 //    3 .停止定时器
     [self removeCurrentTimeTimer];
+    [self removeLrcTimer];
+    
+    //清空歌词
+    self.lrcView.lrcname = @"";
+    self.lrcView.currentTime = 0;
+
     
 //    4.设置播放按钮状态
     self.playOrPauseButton.selected = NO;
     
+}
+- (void)addLrcTimer
+{
+    if (self.lrcView.hidden == YES) return;
+    
+    if (self.player.isPlaying == NO && self.lrcTimer) {
+        [self updateLrcTimer];
+        return;
+    }
+    
+    [self removeLrcTimer];
+    
+    [self updateLrcTimer];
+    
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrcTimer)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+- (void)updateLrcTimer
+{
+    self.lrcView.currentTime = self.player.currentTime;
+}
+- (void)removeLrcTimer
+{
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
 }
 #pragma mark - 私有方法
 /**
@@ -208,6 +264,8 @@
 //        隐藏view 显示的时候不隐藏
         self.view.hidden = YES;
 //        [self resetPlayingMusic];
+
+        [self removeLrcTimer];
 //        退出时让界面可以点击
         window.userInteractionEnabled = YES;
     }];
@@ -219,12 +277,14 @@
         self.playOrPauseButton.selected = NO;
         [CLAudioTool pauseMusic:self.musicModel.filename];
         [self removeCurrentTimeTimer];
+        [self removeLrcTimer];
         
         
     }else {
         self.playOrPauseButton.selected = YES;
         [CLAudioTool playMusic:self.musicModel.filename];
         [self addCurrentTimeTimer];
+        [self addLrcTimer];
     }
 }
 
@@ -233,9 +293,11 @@
     if (self.lrcView.isHidden) {// 显示歌词，盖住图片
         self.lrcView.hidden = NO;
         sender.selected = YES;
+        [self addLrcTimer];
     }else {// 隐藏歌词，显示图片
         self.lrcView.hidden = YES;
         sender.selected = NO;
+        [self removeLrcTimer];
     }
     
 }
@@ -314,11 +376,13 @@
         
         //        停止定时器
         [self removeCurrentTimeTimer];
+        [self removeLrcTimer];
 //        手松开
     }else if (sender.state == UIGestureRecognizerStateEnded){
 //        设置播放器的时间
         self.player.currentTime = time;
         [self addCurrentTimeTimer];
+        [self addLrcTimer];
 //        隐藏指示器
         self.currentTimeView.hidden = YES;
     }

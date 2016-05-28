@@ -8,7 +8,7 @@
 
 #import "DRNRealTimeBlurView.h"
 
-@interface CLLrcView : DRNRealTimeBlurView
+@interface CLLrcView : UIImageView
 /**
  *  歌词的文件名
  */
